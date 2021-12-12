@@ -1,10 +1,8 @@
 {
-    "name": "repo-name",
-    "solution_name": "Solution.Name",
-
-    "readme_description": "Solution description",
-    "readme_ci_status_badge": "yes",
-
-    "global_version": "1.0.0",
-    "global_author": "John Doe"
+  "name": "repo-name",
+  "solution_name": "Solution.Name",
+  "readme_description": "Solution description",
+  "readme_ci_status_badge": "yes",
+  "global_version": "1.0.0",
+  "global_author": "John Doe"
 }
