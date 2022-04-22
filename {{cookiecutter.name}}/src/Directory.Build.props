@@ -9,8 +9,8 @@
 
   <!-- Style -->
   <ItemGroup>
-    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.376" PrivateAssets="all"/>
-    <AdditionalFiles Include="$(MSBuildThisFileDirectory)\style\stylecop.json" Link="stylecop.json"/>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.406" PrivateAssets="all"/>
+    <AdditionalFiles Include="$(MSBuildThisFileDirectory)\style\stylecop.json" Link="stylecop.json" Visible="false"/>
     <None Include="$(CodeAnalysisRuleSet)" Condition="'$(CodeAnalysisRuleSet)' != ''" Link="%(Filename)%(Extension)" Visible="false"/>
   </ItemGroup>
 </Project>
