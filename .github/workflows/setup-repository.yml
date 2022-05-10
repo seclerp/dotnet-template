@@ -3,6 +3,22 @@ on:
   push:
     paths:
       - cookiecutter.json
+
+# This is enforce write permissions for GITHUB_TOKEN, by default all scopes are read-only.
+permissions:
+  actions: write
+  contents: write
+#   deployments: write
+#   id-token: write
+#   issues: write
+#   discussions: write
+#   packages: write
+#   pages: write
+#   pull-requests: write
+#   repository-projects: write
+#   security-events: write
+#   statuses: write
+
 jobs:
   setup:
     name: Reinitialize repository
