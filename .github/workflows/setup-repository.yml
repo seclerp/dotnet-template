@@ -13,6 +13,7 @@ permissions:
 jobs:
   setup:
     name: Reinitialize repository
+    if: github.run_number != 1
     runs-on: ubuntu-latest
     env:
       REPO_SETUP_TOKEN: ${{ secrets.REPO_SETUP_TOKEN }}
