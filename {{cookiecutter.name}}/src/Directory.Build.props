@@ -5,11 +5,12 @@
     <Authors>{{cookiecutter.global_author}}</Authors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)\style\Main.ruleset</CodeAnalysisRuleSet>
+    <LangVersion>12</LangVersion>
   </PropertyGroup>
 
   <!-- Style -->
   <ItemGroup>
-    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.435" PrivateAssets="all"/>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.556" PrivateAssets="all"/>
     <AdditionalFiles Include="$(MSBuildThisFileDirectory)\style\stylecop.json" Link="stylecop.json" Visible="false"/>
     <None Include="$(CodeAnalysisRuleSet)" Condition="'$(CodeAnalysisRuleSet)' != ''" Link="%(Filename)%(Extension)" Visible="false"/>
   </ItemGroup>
