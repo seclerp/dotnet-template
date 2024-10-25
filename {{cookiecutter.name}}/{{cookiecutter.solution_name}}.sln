@@ -3,10 +3,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repo", "Repo", "{2E732F82-5
 ProjectSection(SolutionItems) = preProject
 	README.md = README.md
 	.gitignore = .gitignore
-	.github/workflows/build.yml = .github/workflows/build.yml
-	.github/dependabot.yml = .github/dependabot.yml
-	style/Main.ruleset = style/Main.ruleset
-	style/stylecop.json = style/stylecop.json
+	.editorconfig = .editorconfig
 EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{6AEC985B-6164-46BC-853E-2467E7784197}"
@@ -14,6 +11,22 @@ ProjectSection(SolutionItems) = preProject
 	Directory.Build.props = Directory.Build.props
 	Directory.Build.targets = Directory.Build.targets
 EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{B195CC80-ED6B-4935-88D9-2CF24A514C65}"
+	ProjectSection(SolutionItems) = preProject
+		.github\dependabot.yml = .github\dependabot.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{ECCB730D-0A14-4CD5-9AD3-3F2D6FAB8795}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build.yml = .github\workflows\build.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "styles", "styles", "{14B8B9CA-0519-482C-B75C-56B255AEE114}"
+	ProjectSection(SolutionItems) = preProject
+		style\Main.ruleset = style\Main.ruleset
+		style\stylecop.json = style\stylecop.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,5 +38,10 @@ Global
 		{04C9C2ED-83E0-45F7-8401-42AE0BD861C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04C9C2ED-83E0-45F7-8401-42AE0BD861C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04C9C2ED-83E0-45F7-8401-42AE0BD861C2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B195CC80-ED6B-4935-88D9-2CF24A514C65} = {2E732F82-59CD-4910-BE9C-C69ECB31FCAF}
+		{ECCB730D-0A14-4CD5-9AD3-3F2D6FAB8795} = {B195CC80-ED6B-4935-88D9-2CF24A514C65}
+		{14B8B9CA-0519-482C-B75C-56B255AEE114} = {2E732F82-59CD-4910-BE9C-C69ECB31FCAF}
 	EndGlobalSection
 EndGlobal
