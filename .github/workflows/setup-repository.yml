@@ -63,7 +63,7 @@ jobs:
               repo_owner: context.repo.owner,
               repo_name: context.repo.repo,
               repo_url: repo.data.html_url,
-              repo_description: repo.data.description || ""
+              repo_description: repo.data.description || "",
               repo_license: repo.data.license.spdx_id || ""
             };
 
