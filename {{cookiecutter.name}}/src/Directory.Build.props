@@ -1,17 +1,30 @@
 <Project>
-  <!-- Global project and StyleCop Analyzers configuration -->
+  <!-- Metadata -->
   <PropertyGroup>
     <Version>{{cookiecutter.global_version}}</Version>
     <Authors>{{cookiecutter.global_author}}</Authors>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)\style\Main.ruleset</CodeAnalysisRuleSet>
+    <Copyright>© $(Authors) $([System.DateTime]::Now.ToString("yyyy"))</Copyright>
+    <RepositoryUrl>{{cookiecutter.repo_url}}</RepositoryUrl>
+    <PackageLicenseExpression>{{cookiecutter.repo_license}}</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <!-- Global configuration -->
+  <PropertyGroup>
     <LangVersion>12</LangVersion>
+    <UseArtifactsOutput>true</UseArtifactsOutput>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <!-- Style -->
+  <PropertyGroup>
+    <!-- Enable once project is ready for more annoying code style inspections -->  
+    <EnableStyleCopInspections>false</EnableStyleCopInspections>
+    <CodeAnalysisRuleSet Condition="'$(EnableStyleCopInspections)' == 'true'">$(MSBuildThisFileDirectory)\style\Main.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
   <ItemGroup>
-    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.556" PrivateAssets="all"/>
-    <AdditionalFiles Include="$(MSBuildThisFileDirectory)\style\stylecop.json" Link="stylecop.json" Visible="false"/>
-    <None Include="$(CodeAnalysisRuleSet)" Condition="'$(CodeAnalysisRuleSet)' != ''" Link="%(Filename)%(Extension)" Visible="false"/>
+    <PackageReference Condition="'$(EnableStyleCopInspections)' == 'true'" Include="StyleCop.Analyzers" Version="1.2.0-beta.556" PrivateAssets="all"/>
+    <AdditionalFiles Condition="'$(EnableStyleCopInspections)' == 'true'" Include="$(MSBuildThisFileDirectory)\style\stylecop.json" Link="stylecop.json" Visible="false"/>
+    <None Include="$(CodeAnalysisRuleSet)" Condition="'$(CodeAnalysisRuleSet)' != '' AND '$(EnableStyleCopInspections)' == 'true'" Link="%(Filename)%(Extension)" Visible="false"/>
   </ItemGroup>
 </Project>

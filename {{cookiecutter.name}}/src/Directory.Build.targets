@@ -1,5 +1,5 @@
 <Project>
   <ItemGroup>
-    <!-- Add your global NuGet packaged here -->
+    <!-- Add your custom targets here -->
   </ItemGroup>
 </Project>
