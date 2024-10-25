@@ -5,6 +5,5 @@
   "readme_ci_status_badge": "yes",
   "global_version": "1.0.0",
   "global_author": "{{github.username}}",
-  "repo_url": "{{github.repo_url}}",
-  "repo_license": "{{github.repo_license}}"
+  "repo_url": "{{github.repo_url}}"
 }
