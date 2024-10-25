@@ -50,6 +50,37 @@ jobs:
       - name: Install dependencies
         run: pip install cookiecutter
 
+      - name: Get repository information
+        id: repo-info
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const repo = await github.rest.repos.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            });
+            return {
+              repo_owner: context.repo.owner,
+              repo_name: context.repo.repo,
+              repo_url: repo.data.html_url,
+              repo_description: repo.data.description || ""
+              repo_license: repo.data.license.spdx_id || ""
+            };
+
+      - name: Update placeholders in cookiecutter.json
+        env:
+          REPO_OWNER: ${{ steps.repo-info.outputs.repo_owner }}
+          REPO_NAME: ${{ steps.repo-info.outputs.repo_name }}
+          REPO_URL: ${{ steps.repo-info.outputs.repo_url }}
+          REPO_DESCRIPTION: ${{ steps.repo-info.outputs.repo_description }}
+          REPO_LICENSE: ${{ steps.repo-info.outputs.repo_license }}
+        run: |
+          sed -i "s|{{github.username}}|$REPO_OWNER|g" cookiecutter.json
+          sed -i "s|{{github.repo_url}}|$REPO_URL|g" cookiecutter.json
+          sed -i "s|{{github.repo_name}}|$REPO_NAME|g" cookiecutter.json
+          sed -i "s|{{github.repo_description}}|$REPO_DESCRIPTION|g" cookiecutter.json
+          sed -i "s|{{github.repo_license}}|$REPO_LICENSE|g" cookiecutter.json
+
       - name: Scaffolding repository
         # cookiecutter is command-line utility to create projects from templates
         # https://github.com/cookiecutter/cookiecutter
@@ -75,6 +106,10 @@ jobs:
         shell: bash
         # Remove this workflow file
         run: rm -rf ./.github/workflows/setup-repository.yml
+
+      - name: Remove template-only sections from build.yml
+        run: |
+          sed -i '/#<template-ci>/,/#<\/template-ci>/d' .github/workflows/build.yml
 
       - name: Move files to root
         shell: bash
