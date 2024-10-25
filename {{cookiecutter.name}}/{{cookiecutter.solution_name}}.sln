@@ -1,14 +1,12 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repo", "Repo", "{2E732F82-59CD-4910-BE9C-C69ECB31FCAF}"
 ProjectSection(SolutionItems) = preProject
-	../README.md = ../README.md
-	../.gitignore = ../.gitignore
-	../.github/workflows/build.yml = ../.github/workflows/build.yml
-	../.github/dependabot.yml = ../.github/dependabot.yml
 	README.md = README.md
 	.gitignore = .gitignore
 	.github/workflows/build.yml = .github/workflows/build.yml
 	.github/dependabot.yml = .github/dependabot.yml
+	style/Main.ruleset = style/Main.ruleset
+	style/stylecop.json = style/stylecop.json
 EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{6AEC985B-6164-46BC-853E-2467E7784197}"
