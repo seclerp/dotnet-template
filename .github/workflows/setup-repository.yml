@@ -63,8 +63,7 @@ jobs:
               repo_owner: context.repo.owner,
               repo_name: context.repo.repo,
               repo_url: repo.data.html_url,
-              repo_description: repo.data.description || "",
-              repo_license: repo.data.license?.spdx_id || ""
+              repo_description: repo.data.description || ""
             };
 
       - name: Update placeholders in cookiecutter.json
@@ -73,13 +72,11 @@ jobs:
           REPO_NAME: ${{ steps.repo-info.outputs.repo_name }}
           REPO_URL: ${{ steps.repo-info.outputs.repo_url }}
           REPO_DESCRIPTION: ${{ steps.repo-info.outputs.repo_description }}
-          REPO_LICENSE: ${{ steps.repo-info.outputs.repo_license }}
         run: |
           sed -i "s|{{github.username}}|$REPO_OWNER|g" cookiecutter.json
           sed -i "s|{{github.repo_url}}|$REPO_URL|g" cookiecutter.json
           sed -i "s|{{github.repo_name}}|$REPO_NAME|g" cookiecutter.json
           sed -i "s|{{github.repo_description}}|$REPO_DESCRIPTION|g" cookiecutter.json
-          sed -i "s|{{github.repo_license}}|$REPO_LICENSE|g" cookiecutter.json
 
       - name: Scaffolding repository
         # cookiecutter is command-line utility to create projects from templates

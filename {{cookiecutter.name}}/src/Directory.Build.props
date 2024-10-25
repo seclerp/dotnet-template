@@ -5,7 +5,6 @@
     <Authors>{{cookiecutter.global_author}}</Authors>
     <Copyright>© $(Authors) $([System.DateTime]::Now.ToString("yyyy"))</Copyright>
     <RepositoryUrl>{{cookiecutter.repo_url}}</RepositoryUrl>
-    <PackageLicenseExpression>{{cookiecutter.repo_license}}</PackageLicenseExpression>
   </PropertyGroup>
 
   <!-- Global configuration -->
@@ -17,7 +16,7 @@
 
   <!-- Style -->
   <PropertyGroup>
-    <!-- Enable once project is ready for more annoying code style inspections -->  
+    <!-- Enable once project is ready for more annoying code style inspections -->
     <EnableStyleCopInspections>false</EnableStyleCopInspections>
     <CodeAnalysisRuleSet Condition="'$(EnableStyleCopInspections)' == 'true'">$(MSBuildThisFileDirectory)\style\Main.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
