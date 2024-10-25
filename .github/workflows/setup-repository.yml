@@ -55,20 +55,19 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            const core = require('@actions/core');
             const repo = await github.rest.repos.get({
               owner: context.repo.owner,
               repo: context.repo.repo,
             });
-            return {
-              repo_owner: context.repo.owner,
-              repo_name: context.repo.repo,
-              repo_url: repo.data.html_url,
-              repo_description: repo.data.description || ""
-            };
+            core.setOutput('owner', context.repo.owner);
+            core.setOutput('repo_name', context.repo.repo);
+            core.setOutput('repo_url', repo.data.html_url);
+            core.setOutput('repo_description', repo.data.description || "No description provided.");
 
       - name: Update placeholders in cookiecutter.json
         env:
-          REPO_OWNER: ${{ steps.repo-info.outputs.repo_owner }}
+          GITHUB_USERNAME: ${{ steps.repo-info.outputs.owner }}
           REPO_NAME: ${{ steps.repo-info.outputs.repo_name }}
           REPO_URL: ${{ steps.repo-info.outputs.repo_url }}
           REPO_DESCRIPTION: ${{ steps.repo-info.outputs.repo_description }}
