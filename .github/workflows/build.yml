@@ -1,5 +1,5 @@
 name: Build and Test
-#<template-ci>
+
 on:
   push:
     paths-ignore:
@@ -7,7 +7,6 @@ on:
   pull_request:
     paths-ignore:
       - 'cookiecutter.json' # Do not run .NET CI after editing cookiecutter.json (project setup in progress)
-#</template-ci>
 
 defaults:
   run:
