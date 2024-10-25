@@ -64,7 +64,7 @@ jobs:
               repo_name: context.repo.repo,
               repo_url: repo.data.html_url,
               repo_description: repo.data.description || "",
-              repo_license: repo.data.license.spdx_id || ""
+              repo_license: repo.data.license?.spdx_id || ""
             };
 
       - name: Update placeholders in cookiecutter.json
