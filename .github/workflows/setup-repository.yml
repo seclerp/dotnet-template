@@ -33,7 +33,7 @@ jobs:
             https://api.github.com/repos/$GITHUB_REPOSITORY \
             | jq --exit-status '.is_template == false';
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           # Committing workflow files using the regular GITHUB_TOKEN will fail with 
           # `Git Error: Refusing to allow a GitHub App to create or update workflow without workflows permission`.
@@ -43,7 +43,7 @@ jobs:
           # Checkout my blog post https://stefanbuck.com/blog for alternative options
           token: ${{ env.REPO_SETUP_TOKEN || secrets.GITHUB_TOKEN }}
 
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
@@ -52,7 +52,7 @@ jobs:
 
       - name: Get repository information
         id: repo-info
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           script: |
             const repo = await github.rest.repos.get({
