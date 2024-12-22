@@ -1,9 +1,24 @@
 version: 2
 updates:
-  - package-ecosystem: "nuget"
-    directory: "/src"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 10
-    labels:
-      - "dependencies"
+    groups:
+      dotnet:
+        patterns:
+          - "*" # Prefer a single PR per solution update.
+
+  # NuGet packages
+  - package-ecosystem: "nuget"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 25
+    groups:
+      dotnet:
+        patterns:
+          - "*"
