@@ -1,10 +1,10 @@
 <Project>
   <!-- Metadata -->
   <PropertyGroup>
-    <Version>{{cookiecutter.global_version}}</Version>
-    <Authors>{{cookiecutter.global_author}}</Authors>
+    <Version>{{global_version}}</Version>
+    <Authors>{{global_author}}</Authors>
     <Copyright>© $(Authors) $([System.DateTime]::Now.ToString("yyyy"))</Copyright>
-    <RepositoryUrl>{{cookiecutter.repo_url}}</RepositoryUrl>
+    <RepositoryUrl>{{repo_url}}</RepositoryUrl>
   </PropertyGroup>
 
   <!-- Global configuration -->
