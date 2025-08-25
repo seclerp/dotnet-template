@@ -33,7 +33,7 @@ jobs:
             https://api.github.com/repos/$GITHUB_REPOSITORY \
             | jq --exit-status '.is_template == false';
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           # Committing workflow files using the regular GITHUB_TOKEN will fail with 
           # `Git Error: Refusing to allow a GitHub App to create or update workflow without workflows permission`.
