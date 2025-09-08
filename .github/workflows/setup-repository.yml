@@ -43,7 +43,7 @@ jobs:
           # Checkout my blog post https://stefanbuck.com/blog for alternative options
           token: ${{ env.REPO_SETUP_TOKEN || secrets.GITHUB_TOKEN }}
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.x'
 
@@ -52,7 +52,7 @@ jobs:
 
       - name: Get repository information
         id: repo-info
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const repo = await github.rest.repos.get({
