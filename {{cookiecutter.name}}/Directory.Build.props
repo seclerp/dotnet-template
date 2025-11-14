@@ -9,7 +9,7 @@
 
   <!-- Global configuration -->
   <PropertyGroup>
-    <LangVersion>12</LangVersion>
+    <LangVersion>14</LangVersion>
     <UseArtifactsOutput>true</UseArtifactsOutput>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
