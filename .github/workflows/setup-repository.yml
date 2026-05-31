@@ -70,11 +70,25 @@ jobs:
           REPO_NAME: ${{ steps.repo-info.outputs.repo_name }}
           REPO_URL: ${{ steps.repo-info.outputs.repo_url }}
           REPO_DESCRIPTION: ${{ steps.repo-info.outputs.repo_description }}
+        # Use `jq` instead of `sed` so the substituted values are serialized as
+        # proper JSON. Values are passed via `--arg` (read as data, not code) and
+        # `jq` handles escaping characters such as `"`, `\` and newlines, which
+        # would otherwise produce invalid JSON and break the scaffolding step.
         run: |
-          sed -i "s|{{github.username}}|$REPO_OWNER|g" cookiecutter.json
-          sed -i "s|{{github.repo_url}}|$REPO_URL|g" cookiecutter.json
-          sed -i "s|{{github.repo_name}}|$REPO_NAME|g" cookiecutter.json
-          sed -i "s|{{github.repo_description}}|$REPO_DESCRIPTION|g" cookiecutter.json
+          jq \
+            --arg owner "$REPO_OWNER" \
+            --arg url "$REPO_URL" \
+            --arg name "$REPO_NAME" \
+            --arg description "$REPO_DESCRIPTION" \
+            'walk(
+              if type == "string" then
+                gsub("\\{\\{github\\.username\\}\\}"; $owner)
+                | gsub("\\{\\{github\\.repo_url\\}\\}"; $url)
+                | gsub("\\{\\{github\\.repo_name\\}\\}"; $name)
+                | gsub("\\{\\{github\\.repo_description\\}\\}"; $description)
+              else . end
+            )' cookiecutter.json > cookiecutter.json.tmp
+          mv cookiecutter.json.tmp cookiecutter.json
 
       - name: Scaffolding repository
         # cookiecutter is command-line utility to create projects from templates
